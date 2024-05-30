@@ -7,7 +7,8 @@ from zope.interface import implements
 
 
 class Task(Container):
-    """ Task class """
+    """Task class"""
+
     implements(ITaskContent)
 
     # disable local roles inheritance

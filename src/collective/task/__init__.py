@@ -4,5 +4,5 @@
 from zope.i18nmessageid import MessageFactory
 
 
-_ = MessageFactory('collective.task')
-PMF = MessageFactory('plone')
+_ = MessageFactory("collective.task")
+PMF = MessageFactory("plone")
