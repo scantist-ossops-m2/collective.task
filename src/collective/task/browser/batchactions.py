@@ -14,13 +14,14 @@ from zope.lifecycleevent import modified
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
+
 try:
     from collective.eeafaceted.batchactions.browser.views import BaseBatchActionForm as bbaf
 
     baf_base = bbaf
+    from collective.eeafaceted.batchactions.interfaces import IBatchActionsMarker
     from collective.eeafaceted.batchactions.utils import cannot_modify_field_msg
     from collective.eeafaceted.batchactions.utils import is_permitted
-    from collective.eeafaceted.batchactions.interfaces import IBatchActionsMarker
 
     class ITasksBatchActionsMarker(IBatchActionsMarker):
         """Marker interface for tasks batch actions context."""

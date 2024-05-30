@@ -14,6 +14,7 @@ from z3c.table.table import Table
 from zope.cachedescriptors.property import CachedProperty
 from zope.i18n import translate
 
+
 try:
     from imio.prettylink.interfaces import IPrettyLink
 except ImportError:
