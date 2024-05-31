@@ -43,7 +43,6 @@ setup(
         "dexterity.localrolesfield>=2.0.0a0",
         "plone.api",
         "plone.app.lockingbehavior",
-        "plone.directives.form",
         "plone.formwidget.masterselect",
         'plone.principalsource; python_version<"3"',
         "future",

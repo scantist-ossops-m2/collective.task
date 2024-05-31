@@ -7,7 +7,6 @@ from plone import api
 from plone.app.textfield import RichText
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.dexterity.browser.edit import DefaultEditForm
-from plone.directives.form.value import default_value
 from plone.supermodel import model
 from plone.supermodel.directives import fieldset
 from Products.CMFPlone.utils import base_hasattr
@@ -88,6 +87,14 @@ def get_parent_assigned_group(context):
     return None
 
 
+def get_current_user_id():
+    """Current user by default."""
+    current_user = api.user.get_current()
+    if current_user:
+        return current_user.getId()
+    return None
+
+
 class ITaskContainer(Interface):
 
     """Marker interface for task containers."""
@@ -134,7 +141,12 @@ class ITask(model.Schema):
         max=datetime.date(now.year + 1, 12, 31),
     )
 
-    enquirer = LocalRoleField(title=_(u"Enquirer"), required=False, vocabulary="collective.task.Enquirer")
+    enquirer = LocalRoleField(
+        title=_(u"Enquirer"),
+        required=False,
+        vocabulary="collective.task.Enquirer",
+        defaultFactory=get_current_user_id,
+    )
 
 
 class ITaskWithFieldset(ITask):
@@ -167,15 +179,6 @@ class ITaskWithFieldset(ITask):
             },
         ),
     )
-
-
-@default_value(field=ITask["enquirer"])
-def get_current_user_id(data):
-    """Current user by default."""
-    current_user = api.user.get_current()
-    if current_user:
-        return current_user.getId()
-    return None
 
 
 alsoProvides(ITask, IFormFieldProvider)

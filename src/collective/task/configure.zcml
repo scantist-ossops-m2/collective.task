@@ -13,7 +13,6 @@
 
     <include package="dexterity.localrolesfield"/>
     <include package="plone.principalsource" zcml:condition="not-have plone-5"/>
-    <include package="plone.directives.form" />
     <include package="plone.supermodel.exportimport" />
     <include package="plone.formwidget.masterselect" />
     <include package="z3c.table" />
