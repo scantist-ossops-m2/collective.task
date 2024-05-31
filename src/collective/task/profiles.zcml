@@ -4,9 +4,28 @@
     i18n_domain="imio.dms.mail">
 
     <genericsetup:registerProfile
+        name="install-base"
+        title="collective.task"
+        directory="profiles/base"
+        description="Installs the collective.task base add-on."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        post_handler=".setuphandlers.post_install"
+        />
+
+    <genericsetup:registerProfile
+        zcml:condition="not-have plone-5"
         name="default"
         title="collective.task"
-        directory="profiles/default"
+        directory="profiles/plone4"
+        description="Installs the collective.task add-on."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <genericsetup:registerProfile
+        zcml:condition="have plone-60"
+        name="default"
+        title="collective.task"
+        directory="profiles/plone6"
         description="Installs the collective.task add-on."
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
