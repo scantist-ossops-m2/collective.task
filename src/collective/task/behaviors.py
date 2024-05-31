@@ -91,7 +91,7 @@ def get_current_user_id():
     """Current user by default."""
     current_user = api.user.get_current()
     if current_user:
-        return current_user.getId()
+        return current_user.getUserName()
     return None
 
 
