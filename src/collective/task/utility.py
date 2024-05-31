@@ -5,13 +5,12 @@ from Acquisition import aq_inner
 from Acquisition import aq_parent
 from dexterity.localroles.interfaces import ILocalRolesRelatedSearchUtility
 from plone import api
-from zope.interface import implements
+from zope.interface import implementer
 
 
+@implementer(ILocalRolesRelatedSearchUtility)
 class TaskContainerRelatedSearch(object):
     """TaskContainer related search."""
-
-    implements(ILocalRolesRelatedSearchUtility)
 
     def get_objects(self, obj):
         """Return the parents if they are TaskContainer."""

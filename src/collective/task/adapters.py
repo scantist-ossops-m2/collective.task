@@ -8,12 +8,17 @@ from plone.indexer import indexer
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.interfaces import IContentish
 from Products.CMFPlone.utils import base_hasattr
-from Products.PluginIndexes.common.UnIndex import _marker as common_marker
 from Products.PluginIndexes.DateIndex.DateIndex import _marker as date_marker
 from zope.component import adapts
 from zope.component import getUtility
 from zope.dottedname.resolve import resolve
-from zope.interface import implements
+from zope.interface import implementer
+
+
+try:
+    from Products.PluginIndexes.common.UnIndex import _marker as common_marker  # noqa
+except ImportError:
+    from Products.PluginIndexes.unindex import _marker as common_marker  # noqa
 
 
 EMPTY_STRING = "__empty_string__"
@@ -52,8 +57,8 @@ def due_date_index(obj):
     return date_marker
 
 
+@implementer(ITaskMethods)
 class TaskAdapter(object):
-    implements(ITaskMethods)
     adapts(ITask)
 
     def __init__(self, context):

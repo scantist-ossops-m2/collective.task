@@ -58,7 +58,7 @@ class UserColumn(Column):
         username = getattr(value, self.field, "")
         if username and username != EMPTY_STRING:
             member = api.user.get(username)
-            return escape(member.getUser().getProperty("fullname").decode("utf-8"))
+            return escape(safe_unicode(member.getUser().getProperty("fullname")))
 
         return ""
 
@@ -112,7 +112,7 @@ class AssignedGroupColumn(Column):
     def renderCell(self, value):
         if value.assigned_group:
             group = api.group.get(value.assigned_group).getGroup()
-            return escape(group.getProperty("title").decode("utf-8"))
+            return escape(safe_unicode(group.getProperty("title")))
         return ""
 
 

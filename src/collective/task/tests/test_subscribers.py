@@ -10,7 +10,7 @@ from zope.interface import Interface
 from zope.lifecycleevent import Attributes
 from zope.lifecycleevent import modified
 
-import unittest2 as unittest
+import unittest
 
 
 class TestSubscribers(unittest.TestCase):

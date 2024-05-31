@@ -6,6 +6,7 @@ from collective.task.adapters import EMPTY_STRING
 from collective.task.behaviors import ITask
 from operator import methodcaller
 from plone import api
+from Products.CMFPlone.utils import safe_unicode
 from z3c.form.field import Fields
 from z3c.form.form import Form
 from zope import schema
@@ -73,7 +74,7 @@ class AssignedGroupBatchActionForm(baf_base):
                     api.portal.show_message(
                         _ceb(
                             u"An assigned user is not in this new assigned group. " u'Task "${task}" !',
-                            mapping={"task": brain.getURL().decode("utf8")},
+                            mapping={"task": safe_unicode(brain.getURL())},
                         ),
                         self.request,
                         "error",

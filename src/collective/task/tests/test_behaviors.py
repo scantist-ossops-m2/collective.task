@@ -13,7 +13,7 @@ from zope.component import getMultiAdapter
 from zope.interface import Invalid
 
 import datetime
-import unittest2 as unittest
+import unittest
 
 
 class TestBehaviors(unittest.TestCase):

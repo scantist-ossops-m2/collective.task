@@ -11,7 +11,7 @@ from plone.app.testing import TEST_USER_NAME
 from zope.component import getUtility
 from zope.interface import alsoProvides
 
-import unittest2 as unittest
+import unittest
 
 
 class TestRelatedSearchUtility(unittest.TestCase):
