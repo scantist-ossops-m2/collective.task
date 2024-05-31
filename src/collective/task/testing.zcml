@@ -5,6 +5,8 @@
 
   <include file="configure.zcml" />
 
+  <include package="plone.app.lockingbehavior" />
+
   <genericsetup:registerProfile
       name="testing"
       title="collective.task tests"
