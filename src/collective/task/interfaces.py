@@ -2,9 +2,9 @@
 """Module where all interfaces, events and exceptions live."""
 
 from collective.task import _
+from collective.task import PMF
 from collective.z3cform.datagridfield.registry import DictRow
 from dexterity.localrolesfield.field import LocalRolesField
-from plone.app.dexterity import PloneMessageFactory as _PMF
 from plone.autoform import directives
 from plone.supermodel import model
 from z3c.form.browser.select import SelectFieldWidget
@@ -21,7 +21,7 @@ class ICollectiveTaskLayer(IDefaultBrowserLayer):
 class ITaskContent(model.Schema):
     """Interface for task content type"""
 
-    title = schema.TextLine(title=_PMF(u"label_title", default=u"Title"), required=True)
+    title = schema.TextLine(title=PMF(u"label_title", default=u"Title"), required=True)
 
     parents_assigned_groups = LocalRolesField(
         title=_(u"Parents assigned groups"),
